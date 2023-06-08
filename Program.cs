@@ -5,6 +5,7 @@ using System;
 using System.Net;
 using System.IO;
 using System.Drawing;
+using System.Numerics;
 
 namespace roadkill
 {
@@ -12,8 +13,72 @@ namespace roadkill
     {
         // add getters and setters and constructor and all that silly stuff
         // need to create a method for the game i think maybe
-        private static int honkfrequency = 10000; // might need to change this
-        private static int honkduration = 100; // might need to change this
+        public static string traffic = @"
+        
+                                                         _________________________   
+                    /\\      _____          _____       |   |     |     |    | |  \  
+     ,-----,       /  \\____/__|__\_    ___/__|__\___   |___|_____|_____|____|_|___\ 
+  ,--'---:---`--, /  |  _     |     `| |      |      `| |                    | |    \
+ ==(o)-----(o)==J    `(o)-------(o)=   `(o)------(o)'   `--(o)(o)--------------(o)--'  
+`````````````````````````````````````````````````````````````````````````````````````
+
+        ";
+        private static int honkfrequency; 
+        private static int honkduration; 
+        private static bool ending;
+
+        bool gameplay()
+        {
+            Console.Title = "cyberpunk2077.exe";
+
+            while(true)
+            {        
+                Console.Write("Pick a number.");
+                    
+                if(int.TryParse(Console.ReadLine(), out int result))
+                {
+                    honkfrequency = Convert.ToInt32(Console.ReadLine());
+                    break;
+                }
+                else
+                {
+                        Console.Write("Try again loser!");
+                        
+                }
+            }
+            while(true)
+            {
+                Console.Write("Pick another number.");
+
+                if(int.TryParse(Console.ReadLine(), out int result))
+                {
+                    honkduration = Convert.ToInt32(Console.ReadLine());
+                    break;
+                }
+                else
+                {
+                        Console.Write("Stop trying to be different.");
+                        
+                }
+
+            return ending; // will be equal to true or false and determine what consequence
+            }    
+                    
+            Console.Write(traffic);
+            
+            Console.Beep(honkfrequency, honkduration);
+    
+                
+
+                // some exceptions to handle hehehehehe   
+                //    IOException
+                //    OutOfMemoryException
+                //    ArgumentOutOfRangeException
+            
+
+            // return statement here please gal
+        }
+        
         
 
     }
