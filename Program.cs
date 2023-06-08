@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using System.Drawing;
 using System.Numerics;
+using System.Timers;
 
 // hello before you start on this again, you might need to rearrange some things since there are two endings to the game
 // the photos probably shouldn't be its own class, and it might all need to be in the game (or same class hehe) class
@@ -30,12 +31,17 @@ namespace roadkill
         private static int honkfrequency; 
         private static int honkduration; 
         private static bool ending;
+        private static string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+        private static TimeSpan waittime;
 
         bool gameplay()
         {
             Console.Title = "cyberpunk2077.exe";
+            Console.Write("Please enter your full legal name, billing address, credit card number, cvv, and expiration date.");
+            Console.ReadKey();
+            Console.Write("Just kidding lol.");
 
-            while(true)
+            while(true) // user input determines the frequency of the console beep
             {        
                 Console.Write("Pick a number.");
                     
@@ -50,9 +56,9 @@ namespace roadkill
                         
                 }
             }
-            while(true)
+            while(true) // user input determines the duration of the console beep.  tread lightly young padawan.
             {
-                Console.Write("Pick another number.");
+                Console.Write("Pick another number."); 
 
                 if(int.TryParse(Console.ReadLine(), out int result))
                 {
@@ -61,16 +67,37 @@ namespace roadkill
                 }
                 else
                 {
-                        Console.Write("Stop trying to be different.");
-                        
+                        Console.Write("Stop trying to be different and just pick a number.");                       
+                }
+            }    
+
+            // probably need to clean up this dialog and make it look prettier and add spaces and whatnot        
+            Console.Write(traffic);
+            Console.Beep(honkfrequency, honkduration);
+            Console.Write("That sound? That's traffic.");
+            Console.Write("Wait, what was your name again?");
+            Console.ReadKey();
+            Console.Write("Just kidding.  How could I forget!");
+            Console.Write("You, " + username + " are sitting in the car, trying to leave town after work.  It is approximately 5:15pm EST.  Traffic is moving slowly.");
+            
+
+            // this next part really is going to need some cooking on 
+            while(true) // user input determines the length of the timer countdown thing
+            {
+                Console.Write("Pick a number."); 
+                try
+                {
+                    waittime = TimeSpan.Parse(Console.ReadLine());
+                }
+                catch
+                {
+
                 }
 
-            return ending; // will be equal to true or false and determine what consequence
-            }    
-                    
-            Console.Write(traffic);
-            
-            Console.Beep(honkfrequency, honkduration);
+
+              
+            }  
+
     
                 
 
@@ -81,6 +108,7 @@ namespace roadkill
             
 
             // return statement here please gal
+            return ending; // will be equal to true or false and determine what consequence
         }
         
         
@@ -108,7 +136,6 @@ namespace roadkill
         {
             try
             {
-                
                 
             }
             catch
