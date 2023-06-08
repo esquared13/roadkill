@@ -7,6 +7,10 @@ using System.IO;
 using System.Drawing;
 using System.Numerics;
 
+// hello before you start on this again, you might need to rearrange some things since there are two endings to the game
+// the photos probably shouldn't be its own class, and it might all need to be in the game (or same class hehe) class
+
+
 namespace roadkill
 {
     class game
