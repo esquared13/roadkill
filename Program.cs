@@ -96,11 +96,25 @@ namespace Roadkill
 
                 if(!int.TryParse(timerinputer, out seconds) || seconds <= 0)
                 {
-
+                    Console.WriteLine("Please pick an actual number that will work.")
                 }
-                    
+                
+                if(seconds == 0)
+                {
+                    return;
+                }
 
-            } 
+                Timer trafficjam = new Timer(seconds * 1000);
+                timer.Elapsed += TimerElapsed;
+
+                timer.Start();
+                Console.WriteLine("It appears that you are now stuck in a traffic jam for " + timerinput + " seconds.  Please wait.")
+            }
+
+            static void TimerElapsed(object sender, ElapsedEventArgs e)
+            {
+                Console.WriteLine""
+            }
                 // some exceptions to handle hehehehehe   
                 //    IOException
                 //    OutOfMemoryException
@@ -158,58 +172,91 @@ namespace Roadkill
 
 // another snippet
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        int seconds;
+//class Program
+//{
+ //   static void Main(string[] args)
+   // {
+     //   int seconds;
+     //
+       // while (true)
+        //{
+          //  Console.Write("Enter the number of seconds for the timer: ");
+            //string input = Console.ReadLine();
+           
+            //if (!int.TryParse(input, out seconds) || seconds <= 0)
+            //{
+              //  Console.WriteLine("Invalid input. Please enter a positive integer.");
+                //continue;
+          //  }
 
-        while (true)
-        {
-            Console.Write("Enter the number of seconds for the timer: ");
-            string input = Console.ReadLine();
+//            Timer timer = new Timer(seconds * 1000);
+  //          timer.Elapsed += TimerElapsed;
+  //
+    //        timer.Start();
 
-            if (!int.TryParse(input, out seconds) || seconds <= 0)
-            {
-                Console.WriteLine("Invalid input. Please enter a positive integer.");
-                continue;
-            }
+   //         Console.WriteLine("Press Enter to start another timer or 'q' to quit.");
+    //        string choice = Console.ReadLine();
 
-            Timer timer = new Timer(seconds * 1000);
-            timer.Elapsed += TimerElapsed;
+      //      if (choice == "q")
+  //              break;
+//
+    //        timer.Stop();
+ //       }
+  //  }
 
-            timer.Start();
-
-            Console.WriteLine("Press Enter to start another timer or 'q' to quit.");
-            string choice = Console.ReadLine();
-
-            if (choice == "q")
-                break;
-
-            timer.Stop();
-        }
-    }
-
-    static void TimerElapsed(object sender, ElapsedEventArgs e)
-    {
-        Console.WriteLine("Timer finished!");
-    }
-}
-This code allows the user to enter the number of seconds for the timer, starts the timer, and displays the "Timer finished!" message when the timer elapses. After each timer completes, the user can choose to start another timer or quit the program by pressing 'q'.
-
-
+//    static void TimerElapsed(object sender, ElapsedEventArgs e)
+  //  {
+   //     Console.WriteLine("Timer finished!");
+ //   }
+//}
+//This code allows the user to enter the number of seconds for the timer, starts the timer, and displays the "Timer finished!" message when the timer elapses. After each timer completes, the user can choose to start another timer or quit the program by pressing 'q'.
 
 
 
-User
-If the input cannot be parsed, will the loop start back at "Enter the number of seconds
-ChatGPT
-Yes, if the input cannot be parsed or if the entered number of seconds is invalid (less than or equal to 0), the loop will start back at the "Enter the number of seconds" prompt. The continue statement is used to skip the rest of the loop iteration and start the next iteration immediately.
-
-In the provided example, if the user enters an invalid input, such as a non-numeric value or a negative number, the code will display the error message and then continue to the next iteration of the loop, prompting the user again to enter a valid number of seconds. This ensures that the user is prompted until a valid input is provided.
 
 
+//User
+//If the input cannot be parsed, will the loop start back at "Enter the number of seconds
+//ChatGPT
+//Yes, if the input cannot be parsed or if the entered number of seconds is invalid (less than or equal to 0), the loop will start back at the "Enter the number of seconds" prompt. The continue statement is used to skip the rest of the loop iteration and start the next iteration immediately.
 
+//In the provided example, if the user enters an invalid input, such as a non-numeric value or a negative number, the code will display the error message and then continue to the next iteration of the loop, prompting the user again to enter a valid number of seconds. This ensures that the user is prompted until a valid input is provided.
+
+
+//class Program
+//{
+//    static void Main(string[] args)
+  //  {
+    //    int seconds;
+//
+  //      Console.Write("Enter the number of seconds for the timer (0 to exit): ");
+   //     string input = Console.ReadLine();
+   //
+   //     if (!int.TryParse(input, out seconds) || seconds < 0)
+   //     {
+     //       Console.WriteLine("Invalid input. Please enter a non-negative integer or 0 to exit.");
+       //     return;
+  //      }
+//
+  //      if (seconds == 0)
+//            return;
+//
+//        Timer timer = new Timer(seconds * 1000);
+//        timer.Elapsed += TimerElapsed;
+
+//        timer.Start();
+//
+//        Console.WriteLine("Timer started. Press any key to exit.");
+//        Console.ReadKey();
+
+//        timer.Stop();
+//    }
+
+//    static void TimerElapsed(object sender, ElapsedEventArgs e)
+//    {
+//        Console.WriteLine("Timer finished!");
+//    }
+//}
 
 
 
