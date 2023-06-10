@@ -7,6 +7,7 @@ using System.IO;
 using System.Drawing;
 using System.Numerics;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Roadkill
 {
@@ -24,16 +25,18 @@ namespace Roadkill
 
         ";
         private static string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1]; // split takes domain name out of username
-        private static string? timerinput;
-        private static int honkfrequency; 
-        private static int honkduration;
-        private static int seconds;
-        private static bool ending;
+        private static string? timerinput; // stores console input for timer before being parsed
+        private static int honkfrequency; // parsed user input for honk pitch/frequency
+        private static int honkduration; // parsed user input for honk duration
+        private static int seconds; // parsed user input for timer duration
+        private static int label = 1; // label for filename, increments each iteration of the foreach loop
+        private static string? address; // used to store each url for each iteration of the foreach loop
+        private static string? destination; // used to store each destination for the downloads of each iteration of the foreach loop
+        private static string? content; // holds StreamReader content for each iteration of foreach loop
         private static string [] urls = // array of roadkill photo urls
         {
             "https://i1.wp.com/www.denverpost.com/wp-content/uploads/2016/08/20160804_101741_raccoon.jpg?w=810&crop=0%2C0px%2C100%2C9999px",
             "https://radraccoon.files.wordpress.com/2016/08/ta9cmoy-e1470405823516.jpg?w=1108",
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fgraspingforobjectivity.com%2F2017%2F01%2Fon-creating-a-roadkill-kit.html%2F&psig=AOvVaw1-r8I3vhGZ4Dv7fRPPlxE4&ust=1686192239184000&source=images&cd=vfe&ved=2ahUKEwjIzeTckbD_AhWepIkEHe0_DBYQjRx6BAgAEAw",
             "https://images5.memedroid.com/images/UPLOADED11/50bbdca9dc5b7.jpeg",
             "https://4.bp.blogspot.com/_EfDRu0IfQ6s/Se8XsTmtJcI/AAAAAAAAFOc/-gt0O4w2npE/s400/Krystal+King.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjvU83MByLRiij1_tHs0OokmCjMOAte3scWA&usqp=CAU",
@@ -77,8 +80,7 @@ namespace Roadkill
                 }
                         Console.WriteLine("Stop trying to be different and just pick a number.");                       
             }    
-
-            // probably need to clean up this dialog and make it look prettier and add spaces and whatnot        
+    
             Console.WriteLine(traffic);
             Console.Beep(honkfrequency, honkduration);
             Console.WriteLine("That was a honk.");
@@ -87,8 +89,6 @@ namespace Roadkill
             Console.WriteLine("\nJust kidding.  How could I forget!");
             Console.WriteLine("You, " + username + ", are sitting in the car, trying to leave town after work.  It is approximately 5:15pm EST.  Traffic is moving slowly.");
     
-
-            // this next part really is going to need some cooking on 
             while(true) // user input determines the length of the timer countdown thing
             {
                 Console.WriteLine("Pick a number.");
@@ -122,38 +122,33 @@ namespace Roadkill
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
 
+            foreach(string url in urls)
+            {
+                address = url;
+                
+                using(HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
 
+                    byte[] content = await response.Content.ReadAsByteArrayAsync();
+                    
+                    string contenttype = response.Content.Headers.ContentType.MediaType;
+                    string fileextension = contenttype switch
+                    {
+                        "image/jpeg" => ".jpg",
+                        "image/png" => ".png",
+                        "image/gif" => ".gif", // for scalability ;)
+                        _ => ".jpg" // defaults to .jpg if content type is unknown
+                    };
 
-            
+                    destination = $@"C:\Users\{username}\Desktop\photo{label}{fileextension}";
+                    File.WriteAllBytes(destination, content);
+                }
+                
+                label++;
 
-                // some exceptions to handle hehehehehe   
-                //    IOException
-                //    OutOfMemoryException
-                //    ArgumentOutOfRangeException
-            
-
-            // no return but have an outcome that determines the other things
+            }
         }
     }
 }
-
-
-
-
-
-// code snippet for download and destination
-//public class Example
-//{
- //   public static void Main()
-   // {
-     //   String url = "https://code.jquery.com/jquery-3.6.1.min.js";
-       // string dest = @"D:\jquery-3.6.1.min.js";
- //
-   //     using (StreamReader reader = new StreamReader(WebRequest.Create(url)
-     //           .GetResponse().GetResponseStream()))
-       // {
-         //   String content = reader.ReadToEnd();
-           // File.WriteAllText(dest, content);
-      //  }    
-    //}
-//}
