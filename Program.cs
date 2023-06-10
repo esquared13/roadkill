@@ -6,7 +6,7 @@ using System.Net;
 using System.IO;
 using System.Drawing;
 using System.Numerics;
-using System.Timers;
+using System.Threading.Tasks;
 
 namespace Roadkill
 {
@@ -24,7 +24,7 @@ namespace Roadkill
 
         ";
         private static string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1]; // split takes domain name out of username
-        private static string timerinput;
+        private static string? timerinput;
         private static int honkfrequency; 
         private static int honkduration;
         private static int seconds;
@@ -41,7 +41,7 @@ namespace Roadkill
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJIG_zyqeY8phRfW2KNSR7xUlGFLrBVmqrew&usqp=CAU"
         };
 
-        static void Main()
+        static async Task Main()
         {
             Console.Title = "cyberpunk2077.exe";
             Console.WriteLine("Please enter your full legal name, billing address, credit card number, cvv, and expiration date.");
@@ -92,29 +92,40 @@ namespace Roadkill
             while(true) // user input determines the length of the timer countdown thing
             {
                 Console.WriteLine("Pick a number.");
-                timerinput = Console.Readline();
+                timerinput = Console.ReadLine();
 
-                if(!int.TryParse(timerinputer, out seconds) || seconds <= 0)
+                if(!int.TryParse(timerinput, out seconds) || seconds <= 0)
                 {
-                    Console.WriteLine("Please pick an actual number that will work.")
+                    Console.WriteLine("Please pick an actual number that will work.");
                 }
+                else
+                {
+                    break;
+                }
+
+            }
                 
-                if(seconds == 0)
-                {
-                    return;
-                }
-
-                Timer trafficjam = new Timer(seconds * 1000);
-                timer.Elapsed += TimerElapsed;
-
-                timer.Start();
-                Console.WriteLine("It appears that you are now stuck in a traffic jam for " + timerinput + " seconds.  Please wait.")
-            }
-
-            static void TimerElapsed(object sender, ElapsedEventArgs e)
+            if(seconds == 0)
             {
-                Console.WriteLine""
+                return;
             }
+
+            Console.WriteLine("It appears that you are now stuck in a traffic jam for " + timerinput + " seconds.  Please wait.");
+            await Task.Delay(seconds * 1000);
+            
+            Console.WriteLine("Wake up! There's that honk again!");
+
+            Console.Beep(honkfrequency, honkduration);
+
+            Console.WriteLine("It appears that in your reckless driving and carelessness you have hit an innocent creature with your car");
+            Console.WriteLine("You Lose!");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+
+
+
+            
+
                 // some exceptions to handle hehehehehe   
                 //    IOException
                 //    OutOfMemoryException
@@ -122,27 +133,6 @@ namespace Roadkill
             
 
             // no return but have an outcome that determines the other things
-        }
-    }
-    class Photos
-    {
-
-        
-        // add getters and setters and constructor and all that jazz
-        // create a loop that changes the imageURL variable to the different URLs and downloads all of the images, also add a changing title variable
-        // create a variable that pulls the user name for the file location
-    
-        public void download(string imageURL)
-        {
-            try
-            {
-                
-            }
-            catch
-            {
-
-            }
-            
         }
     }
 }
@@ -167,96 +157,3 @@ namespace Roadkill
       //  }    
     //}
 //}
-
-
-
-// another snippet
-
-//class Program
-//{
- //   static void Main(string[] args)
-   // {
-     //   int seconds;
-     //
-       // while (true)
-        //{
-          //  Console.Write("Enter the number of seconds for the timer: ");
-            //string input = Console.ReadLine();
-           
-            //if (!int.TryParse(input, out seconds) || seconds <= 0)
-            //{
-              //  Console.WriteLine("Invalid input. Please enter a positive integer.");
-                //continue;
-          //  }
-
-//            Timer timer = new Timer(seconds * 1000);
-  //          timer.Elapsed += TimerElapsed;
-  //
-    //        timer.Start();
-
-   //         Console.WriteLine("Press Enter to start another timer or 'q' to quit.");
-    //        string choice = Console.ReadLine();
-
-      //      if (choice == "q")
-  //              break;
-//
-    //        timer.Stop();
- //       }
-  //  }
-
-//    static void TimerElapsed(object sender, ElapsedEventArgs e)
-  //  {
-   //     Console.WriteLine("Timer finished!");
- //   }
-//}
-//This code allows the user to enter the number of seconds for the timer, starts the timer, and displays the "Timer finished!" message when the timer elapses. After each timer completes, the user can choose to start another timer or quit the program by pressing 'q'.
-
-
-
-
-
-//User
-//If the input cannot be parsed, will the loop start back at "Enter the number of seconds
-//ChatGPT
-//Yes, if the input cannot be parsed or if the entered number of seconds is invalid (less than or equal to 0), the loop will start back at the "Enter the number of seconds" prompt. The continue statement is used to skip the rest of the loop iteration and start the next iteration immediately.
-
-//In the provided example, if the user enters an invalid input, such as a non-numeric value or a negative number, the code will display the error message and then continue to the next iteration of the loop, prompting the user again to enter a valid number of seconds. This ensures that the user is prompted until a valid input is provided.
-
-
-//class Program
-//{
-//    static void Main(string[] args)
-  //  {
-    //    int seconds;
-//
-  //      Console.Write("Enter the number of seconds for the timer (0 to exit): ");
-   //     string input = Console.ReadLine();
-   //
-   //     if (!int.TryParse(input, out seconds) || seconds < 0)
-   //     {
-     //       Console.WriteLine("Invalid input. Please enter a non-negative integer or 0 to exit.");
-       //     return;
-  //      }
-//
-  //      if (seconds == 0)
-//            return;
-//
-//        Timer timer = new Timer(seconds * 1000);
-//        timer.Elapsed += TimerElapsed;
-
-//        timer.Start();
-//
-//        Console.WriteLine("Timer started. Press any key to exit.");
-//        Console.ReadKey();
-
-//        timer.Stop();
-//    }
-
-//    static void TimerElapsed(object sender, ElapsedEventArgs e)
-//    {
-//        Console.WriteLine("Timer finished!");
-//    }
-//}
-
-
-
