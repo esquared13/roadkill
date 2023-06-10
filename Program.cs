@@ -49,12 +49,12 @@ namespace Roadkill
             Console.Title = "cyberpunk2077.exe";
             Console.WriteLine("Please enter your full legal name, billing address, credit card number, cvv, and expiration date.");
             Console.ReadKey();
-            Console.WriteLine("\nJust kidding lol.");
+            Console.WriteLine("\n\nJust kidding lol.");
 
             while(true) // user input determines the frequency of the console beep
             {        
                 
-                Console.WriteLine("Pick a number between 37 and 32767."); // this is the only range of integers that works for the beep frequency
+                Console.WriteLine("\nPick a number between 37 and 32767."); // this is the only range of integers that works for the beep frequency
   
                 if(int.TryParse(Console.ReadLine(), out int frequency))
                 {
@@ -84,14 +84,14 @@ namespace Roadkill
             Console.WriteLine(traffic);
             Console.Beep(honkfrequency, honkduration);
             Console.WriteLine("That was a honk.");
-            Console.WriteLine("Wait, what was your name again?");
+            Console.WriteLine("\nWait, what was your name again?");
             Console.ReadKey();
-            Console.WriteLine("\nJust kidding.  How could I forget!");
-            Console.WriteLine("You, " + username + ", are sitting in the car, trying to leave town after work.  It is approximately 5:15pm EST.  Traffic is moving slowly.");
+            Console.WriteLine("\n\nJust kidding.  How could I forget!");
+            Console.WriteLine("\nYou, " + username + ", are sitting in the car, trying to leave town after work.  It is approximately 5:15pm EST.  Traffic is moving slowly.");
     
             while(true) // user input determines the length of the timer countdown thing
             {
-                Console.WriteLine("Pick a number.");
+                Console.WriteLine("\nPick a number.");
                 timerinput = Console.ReadLine();
 
                 if(!int.TryParse(timerinput, out seconds) || seconds <= 0)
@@ -110,15 +110,15 @@ namespace Roadkill
                 return;
             }
 
-            Console.WriteLine("It appears that you are now stuck in a traffic jam for " + timerinput + " seconds.  Please wait.");
+            Console.WriteLine("\nIt appears that you are now stuck in a traffic jam for " + timerinput + " seconds.  Please wait.");
             await Task.Delay(seconds * 1000);
             
-            Console.WriteLine("Wake up! There's that honk again!");
+            Console.WriteLine("\nWake up! There's that honk again!");
 
             Console.Beep(honkfrequency, honkduration);
 
-            Console.WriteLine("It appears that in your reckless driving and carelessness you have hit an innocent creature with your car");
-            Console.WriteLine("You Lose!");
+            Console.WriteLine("\nIt appears that in your reckless driving and carelessness you have hit an innocent creature with your car");
+            Console.WriteLine("\n\n\n\n\nYou Lose!");
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
 

@@ -1,0 +1,5 @@
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\publish\roadkill.exe
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\publish\roadkill.dll
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\publish\roadkill.deps.json
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\publish\roadkill.runtimeconfig.json
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\publish\roadkill.pdb

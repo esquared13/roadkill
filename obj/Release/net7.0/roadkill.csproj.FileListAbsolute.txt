@@ -1,0 +1,15 @@
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\roadkill.exe
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\roadkill.deps.json
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\roadkill.runtimeconfig.json
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\roadkill.dll
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\bin\Release\net7.0\roadkill.pdb
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.csproj.AssemblyReference.cache
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.AssemblyInfoInputs.cache
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.AssemblyInfo.cs
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.csproj.CoreCompileInputs.cache
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.dll
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\refint\roadkill.dll
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.pdb
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\roadkill.genruntimeconfig.cache
+C:\Users\12esq\OneDrive\Documents\coding projects\c#\roadkill\obj\Release\net7.0\ref\roadkill.dll

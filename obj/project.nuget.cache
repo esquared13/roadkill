@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ZQgAKI2b54W8jXNWMPp/bjOCAmPVJO7ua/HlIR7HnBYlx+LhCJTHRc/eIQThv90GlCm6omDQb+Pg2BI6IfIRnw==",
+  "dgSpecHash": "lF3GRGRvdZeS3e1noARb4bpVrdNDXUd83UbksKY9XLSvYscWIn0cogAmUfpJCECRXJ7MJF2PZPe5oUVo7d89YQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\12esq\\OneDrive\\Documents\\coding projects\\c#\\roadkill\\roadkill.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\12esq\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.5\\microsoft.netcore.app.runtime.win-x64.7.0.5.nupkg.sha512",
+    "C:\\Users\\12esq\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.5\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.5.nupkg.sha512",
+    "C:\\Users\\12esq\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.5\\microsoft.aspnetcore.app.runtime.win-x64.7.0.5.nupkg.sha512"
+  ],
   "logs": []
 }
